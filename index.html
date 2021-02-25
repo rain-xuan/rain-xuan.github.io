@@ -173,7 +173,7 @@
               <span class="post-meta-item-text">نُشر في</span>
               
 
-              <time title="أُنشأ: 2021-02-25 10:24:39 / عُدل: 10:45:37" itemprop="dateCreated datePublished" datetime="2021-02-25T10:24:39+08:00">2021-02-25</time>
+              <time title="أُنشأ: 2021-02-25 10:24:39 / عُدل: 20:12:58" itemprop="dateCreated datePublished" datetime="2021-02-25T10:24:39+08:00">2021-02-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -282,7 +282,37 @@
 </tbody></table>
 </li>
 </ol>
-<h2 id="QUdpSocket服务器端代码"><a href="#QUdpSocket服务器端代码" class="headerlink" title="QUdpSocket服务器端代码"></a>QUdpSocket服务器端代码</h2><h2 id="QUdpSocket客户端代码"><a href="#QUdpSocket客户端代码" class="headerlink" title="QUdpSocket客户端代码"></a>QUdpSocket客户端代码</h2>
+<h2>服务器端的界面设计</h2>
+
+
+
+<h2>客户端界面设计</h2>
+
+
+
+<h2 id="QUdpSocket服务器端代码"><a href="#QUdpSocket服务器端代码" class="headerlink" title="QUdpSocket服务器端代码"></a>QUdpSocket服务器端代码</h2><ol start="0">
+<li><p>在.pro文件中添加</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QT  +=network</span><br></pre></td></tr></table></figure></li>
+<li><p>创建socket对象</p>
+<ul>
+<li>在头文件中加入<code>#include &lt;QUdpSocket&gt;</code></li>
+<li>在类的定义的private中添加<code>QUdpSocket* pQUdpSocket</code></li>
+<li>在构造器中<code>pQUdpSocket = new QUdpSocket(this)</code></li>
+</ul>
+</li>
+<li><p>绑定</p>
+<p><code>pQUdpSocket-&gt;bind(8888)</code>,8888位服务器的端口号</p>
+</li>
+<li><p>数据的接收(信号)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">connect(pQUdpSocket,&amp;QUdpSocket::readyRead,<span class="keyword">this</span>,[=]()&#123;</span><br><span class="line">   <span class="comment">//收数据</span></span><br><span class="line">    <span class="keyword">char</span> buff[<span class="number">1024</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    QHostAddress ip;</span><br><span class="line">    quint16 port;</span><br><span class="line">    pQUdpSocket-&gt;readDatagram(buff,<span class="number">1024</span>,&amp;ip,&amp;port);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//数据的显示</span></span><br><span class="line">    QString str = QString(<span class="string">&quot;ip:%1,port:%2,msg:%3&quot;</span>).arg(ip.toString()).arg(port).grg(buff);</span><br><span class="line">    </span><br><span class="line">    ui-&gt;textEdit_recv-&gt;append();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>槽，到ui设计界面，选中发送的PuseButton,右键转到槽，选择clicked()</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取ip,port,msg</span></span><br><span class="line">QString ip = ui-&gt;lineEdit_IP-&gt;text();</span><br><span class="line">QString port = ui-&gt;lineEdit_port-&gt;text();</span><br><span class="line">QString msg = ui-&gt;textEdit_send-&gt;toPlainText();</span><br><span class="line"></span><br><span class="line">pQUdpSocket-&gt;writeDatagram(msg.toUtf8(),QHostAddress(ip),port.toUInt());</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h2 id="QUdpSocket客户端代码"><a href="#QUdpSocket客户端代码" class="headerlink" title="QUdpSocket客户端代码"></a>QUdpSocket客户端代码</h2><p>和服务端差不多，去掉绑定这一步就行了。</p>
+
       
     </div>
 
