@@ -20,22 +20,22 @@
     var CONFIG = {"hostname":"rain-xuan.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Technology Learning c&#x2F;c++ qt python 前端 mysql">
+  <meta name="description" content="QUdpSocketQT的UDP协议：   windows的UDP编程模型    服务器 客户端    0.协议版本信息 0.协议版本信息   1.创建socket 1.创建socket   2.服务器协议地址簇 2.获取服务器的协议地址簇   3.绑定 3.通信：往服务器发数据   4.接受客户端数据，顺百年获取客户端协议地址簇    5. 关闭 4. 关闭   recv + accpet &#x3D;&#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="QTcpsocket.md">
-<meta property="og:url" content="https://rain-xuan.github.io/2021/02/23/QTcpsocket/index.html">
+<meta property="og:title" content="QUdpSocket">
+<meta property="og:url" content="https://rain-xuan.github.io/2021/02/25/QUdpSocket/index.html">
 <meta property="og:site_name" content="HZYLX">
-<meta property="og:description" content="Technology Learning c&#x2F;c++ qt python 前端 mysql">
+<meta property="og:description" content="QUdpSocketQT的UDP协议：   windows的UDP编程模型    服务器 客户端    0.协议版本信息 0.协议版本信息   1.创建socket 1.创建socket   2.服务器协议地址簇 2.获取服务器的协议地址簇   3.绑定 3.通信：往服务器发数据   4.接受客户端数据，顺百年获取客户端协议地址簇    5. 关闭 4. 关闭   recv + accpet &#x3D;&#x3D;">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-02-23T08:10:32.000Z">
-<meta property="article:modified_time" content="2021-02-23T08:13:46.635Z">
+<meta property="article:published_time" content="2021-02-25T02:24:39.000Z">
+<meta property="article:modified_time" content="2021-02-25T02:45:37.726Z">
 <meta property="article:author" content="rainforest">
 <meta property="article:tag" content="QT">
 <meta property="article:tag" content="网络">
-<meta property="article:tag" content="TCP">
+<meta property="article:tag" content="Udp">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://rain-xuan.github.io/2021/02/23/QTcpsocket/">
+<link rel="canonical" href="https://rain-xuan.github.io/2021/02/25/QUdpSocket/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>QTcpsocket.md | HZYLX</title>
+  <title>QUdpSocket | HZYLX</title>
   
 
 
@@ -154,7 +154,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://rain-xuan.github.io/2021/02/23/QTcpsocket/">
+    <link itemprop="mainEntityOfPage" href="https://rain-xuan.github.io/2021/02/25/QUdpSocket/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -167,7 +167,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          QTcpsocket.md
+          QUdpSocket
         </h1>
 
         <div class="post-meta">
@@ -178,7 +178,7 @@
               <span class="post-meta-item-text">نُشر في</span>
               
 
-              <time title="أُنشأ: 2021-02-23 16:10:32 / عُدل: 16:13:46" itemprop="dateCreated datePublished" datetime="2021-02-23T16:10:32+08:00">2021-02-23</time>
+              <time title="أُنشأ: 2021-02-25 10:24:39 / عُدل: 10:45:37" itemprop="dateCreated datePublished" datetime="2021-02-25T10:24:39+08:00">2021-02-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -200,8 +200,8 @@
       <span class="post-meta-item-text">Changyan: </span>
     
     
-      <a title="changyan" href="/2021/02/23/QTcpsocket/#SOHUCS" itemprop="discussionUrl">
-        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/02/23/QTcpsocket/" itemprop="commentCount"></span>
+      <a title="changyan" href="/2021/02/25/QUdpSocket/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/02/25/QUdpSocket/" itemprop="commentCount"></span>
       </a>
     
   </span>
@@ -217,7 +217,77 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="QUdpSocket"><a href="#QUdpSocket" class="headerlink" title="QUdpSocket"></a>QUdpSocket</h1><h2>QT的UDP协议：</h2>
+
+<ol>
+<li><p>windows的UDP编程模型</p>
+<table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>客户端</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.协议版本信息</td>
+<td>0.协议版本信息</td>
+</tr>
+<tr>
+<td>1.创建socket</td>
+<td>1.创建socket</td>
+</tr>
+<tr>
+<td>2.服务器协议地址簇</td>
+<td>2.获取服务器的协议地址簇</td>
+</tr>
+<tr>
+<td>3.绑定</td>
+<td>3.通信：往服务器发数据</td>
+</tr>
+<tr>
+<td>4.接受客户端数据，顺百年获取客户端协议地址簇</td>
+<td></td>
+</tr>
+<tr>
+<td>5. 关闭</td>
+<td>4. 关闭</td>
+</tr>
+</tbody></table>
+<p><strong>recv + accpet == recvfrom</strong></p>
+<p><strong>send + connect ==sendto</strong></p>
+</li>
+<li><p>QT的UDP编程模型</p>
+<table>
+<thead>
+<tr>
+<th>服务器</th>
+<th>客户端</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.创建socket对象 (QUdpSocket)</td>
+<td>1.创建socket对象(QUdpSocket)</td>
+</tr>
+<tr>
+<td>2.绑定（QUdpSocket::bind）</td>
+<td></td>
+</tr>
+<tr>
+<td>3.收数据 信号发送者：QUdpSocket对象  信号接收者：当前对象  信号：QUdpSocket::readyRead</td>
+<td>2.通信</td>
+</tr>
+<tr>
+<td>4. 发数据  收：readDatagram  发: writeDatagram</td>
+<td></td>
+</tr>
+<tr>
+<td>5. 关闭</td>
+<td>3. 关闭</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="QUdpSocket服务器端代码"><a href="#QUdpSocket服务器端代码" class="headerlink" title="QUdpSocket服务器端代码"></a>QUdpSocket服务器端代码</h2><h2 id="QUdpSocket客户端代码"><a href="#QUdpSocket客户端代码" class="headerlink" title="QUdpSocket客户端代码"></a>QUdpSocket客户端代码</h2>
     </div>
 
     
@@ -228,7 +298,7 @@
           <div class="post-tags">
               <a href="/tags/QT/" rel="tag"># QT</a>
               <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
-              <a href="/tags/TCP/" rel="tag"># TCP</a>
+              <a href="/tags/Udp/" rel="tag"># Udp</a>
           </div>
 
         
@@ -237,13 +307,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/02/23/test-md/" rel="prev" title="test.md">
-      <i class="fa fa-chevron-left"></i> test.md
+    <a href="/2021/02/23/QT%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="QT基础知识.md">
+      <i class="fa fa-chevron-left"></i> QT基础知识.md
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/02/23/QT%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="next" title="QT基础知识.md">
-      QT基础知识.md <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -307,6 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#QUdpSocket"><span class="nav-number">1.</span> <span class="nav-text">QUdpSocket</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">QT的UDP协议：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QUdpSocket%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">QUdpSocket服务器端代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QUdpSocket%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">QUdpSocket客户端代码</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
