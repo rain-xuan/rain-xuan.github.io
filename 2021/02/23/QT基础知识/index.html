@@ -32,11 +32,11 @@
 <meta property="og:image" content="https://gitee.com/youngrainforest/imag/raw/master/imag//image-20210320181451881.png">
 <meta property="og:image" content="https://gitee.com/youngrainforest/imag/raw/master/imag//image-20210320184113008.png">
 <meta property="og:image" content="https://gitee.com/youngrainforest/imag/raw/master/imag//image-20210320184728555.png">
-<meta property="og:image" content="c:/Users/86191/AppData/Roaming/Typora/typora-user-images/image-20210320195522414.png">
+<meta property="og:image" content="https://gitee.com/youngrainforest/imag/raw/master/imag//image-20210320204411534.png">
 <meta property="og:image" content="https://gitee.com/youngrainforest/imag/raw/master/imag//image-20210320203050006.png">
 <meta property="og:image" content="https://gitee.com/youngrainforest/imag/raw/master/imag//image-20210320203356638.png">
 <meta property="article:published_time" content="2021-02-23T11:24:24.000Z">
-<meta property="article:modified_time" content="2021-03-20T12:34:59.507Z">
+<meta property="article:modified_time" content="2021-03-20T12:44:38.711Z">
 <meta property="article:author" content="rainforest">
 <meta property="article:tag" content="QT">
 <meta property="article:tag" content="第一课">
@@ -193,7 +193,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">عُدل في</span>
-                <time title="عُدل: 2021-03-20 20:34:59" itemprop="dateModified" datetime="2021-03-20T20:34:59+08:00">2021-03-20</time>
+                <time title="عُدل: 2021-03-20 20:44:38" itemprop="dateModified" datetime="2021-03-20T20:44:38+08:00">2021-03-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,7 +239,7 @@
 <h3 id="pro文件"><a href="#pro文件" class="headerlink" title=".pro文件"></a>.pro文件</h3><p><img src="https://gitee.com/youngrainforest/imag/raw/master/imag//image-20210320184113008.png" alt=".pro文件"></p>
 <h2 id="从零开始（建一个空项目）"><a href="#从零开始（建一个空项目）" class="headerlink" title="从零开始（建一个空项目）"></a>从零开始（建一个空项目）</h2><h3 id="选择空项目"><a href="#选择空项目" class="headerlink" title="选择空项目"></a>选择空项目</h3><p><img src="https://gitee.com/youngrainforest/imag/raw/master/imag//image-20210320184728555.png" alt="选择空项目"></p>
 <p><strong>后续的操作基本一致</strong></p>
-<h3 id="QT框架"><a href="#QT框架" class="headerlink" title="QT框架"></a>QT框架</h3><p><img src="C:\Users\86191\AppData\Roaming\Typora\typora-user-images\image-20210320195522414.png" alt="QT框架"></p>
+<h3 id="QT框架"><a href="#QT框架" class="headerlink" title="QT框架"></a>QT框架</h3><p><img src="https://gitee.com/youngrainforest/imag/raw/master/imag//image-20210320204411534.png" alt="QT框架"></p>
 <h3 id="手撕-pro文件最主要的部分"><a href="#手撕-pro文件最主要的部分" class="headerlink" title="手撕.pro文件最主要的部分"></a>手撕.pro文件最主要的部分</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#这是makefile的语法</span><br><span class="line">QT  +&#x3D; core gui #QT的核心</span><br><span class="line">#版本号高于4的QT版本</span><br><span class="line">greaterThan(QT_MAJOR_VERSION,4): QT  +&#x3D; widgets;</span><br><span class="line"></span><br><span class="line">#使用c++11标准</span><br><span class="line">CONFIG +&#x3D;c++11</span><br><span class="line"></span><br><span class="line">#源文件</span><br><span class="line">SOURCES +&#x3D; \</span><br><span class="line">    main.cpp \</span><br><span class="line">    myclass.cpp</span><br><span class="line"></span><br><span class="line">#头文件</span><br><span class="line">HEADERS +&#x3D; \</span><br><span class="line">    myclass.h</span><br></pre></td></tr></table></figure>
 <h3 id="手撕mian函数部分"><a href="#手撕mian函数部分" class="headerlink" title="手撕mian函数部分"></a>手撕<code>mian</code>函数部分</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc,argv)</span></span>; <span class="comment">//创建一个QApplication对象</span></span><br><span class="line">    app.exec(); <span class="comment">//阻塞函数，QApplication对象的  exec返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="看图说话"><a href="#看图说话" class="headerlink" title="看图说话"></a>看图说话</h3><p><img src="https://gitee.com/youngrainforest/imag/raw/master/imag//image-20210320203050006.png" alt="看图说话"></p>
